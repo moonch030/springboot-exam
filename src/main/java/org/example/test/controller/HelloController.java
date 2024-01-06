@@ -30,11 +30,12 @@ public class HelloController {
     }
 
     @GetMapping("hello-api")
-    @ResponseBody
+    @ResponseBody //JSON으로 반환하는게 기본
     public Hello helloApi(@RequestParam("name")String name){
         Hello hello = new Hello();
         hello.setName(name);
-        return hello;
+        return hello; // 위에처럼 문자가 아닌 객체를 반환 / JSON 방식 key,value로 이루어진 구조
+        //객체가 오면 JSON방식으로 데이터를 만들어서 응답에 반환
     }
     static class Hello{
         private String name;
