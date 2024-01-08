@@ -38,7 +38,7 @@ class MemoryMemberRepositoryTest {
         member2.setName("spring2");
         repository.save(member2);
 
-       Member result =  repository.findByName("spring").get();
+       Member result =  repository.findByName("spring").get(); //get()은 옵션을 까서 넣는다.....?
        // "spring1"이라는 이름을 갖는 회원을 찾는 것이 아니라 "spring1"이라는 이름과 일치하는 회원을 찾는데,
        // 여기서 "spring1"에 해당하는 회원이 없으므로 Optional에서 get()을 호출하면 NoSuchElementException이 발생
 
