@@ -38,6 +38,7 @@ class MemberServiceTest {
         //then findOne 메서드를 사용하여 저장된 회원을 조회하고, 회원 이름이 예상과 일치하는지 확인
         Member findMember = memberService.findOne(saveId).get();
         Assertions.assertThat(member.getName()).isEqualTo(findMember.getName());
+        // member 객체의 이름과 findMember 객체의 이름이 서로 동일한지를 검증. 만약 두 값이 동일하지 않으면 테스트는 실패
     }
 
     @Test

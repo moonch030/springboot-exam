@@ -3,6 +3,8 @@ package org.example.test.service;
 import org.example.test.domain.Member;
 import org.example.test.repository.MemberRepository;
 import org.example.test.repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +26,7 @@ public class MemberService {
     }
 
     private void validateDuplicateMember(Member member) {
-        memberRepository.findByName(member.getName()) //반환된 값이 Oprional이 비어있지 않으면 즉, 이미 회원이 존재 한다면
+        memberRepository.findByName(member.getName()) //반환된 값이 Optional이 비어있지 않으면 즉, 이미 회원이 존재 한다면
             .ifPresent(m->{ //여기가 실행
                 throw new IllegalStateException("이미 존재하는 회원입니다.");
             });
