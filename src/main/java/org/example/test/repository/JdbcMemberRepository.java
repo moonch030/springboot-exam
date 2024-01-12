@@ -67,6 +67,7 @@ public class JdbcMemberRepository implements MemberRepository{
                 Member member = new Member();
                 member.setId(rs.getLong("id"));
                 member.setName(rs.getString("name"));
+
                 return Optional.of(member);
             } else {
                return Optional.empty();
@@ -159,10 +160,13 @@ public class JdbcMemberRepository implements MemberRepository{
         }
         try {
             if(conn!=null) {
-                conn.close();
+              close(conn);
             }
         }catch (SQLException e){
             e.printStackTrace();
         }
+    }
+    private void close(Connection conn) throws SQLException {
+        DataSourceUtils.releaseConnection(conn, dataSource);
     }
 }
